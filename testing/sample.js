@@ -1,12 +1,36 @@
-export const strictEquals = (a, b) => {
-    if (Object.is(a, NaN) || Object.is(b, NaN)) {
-        return false;
+export const mySome = (array, func) => {
+    let isFinded = false;
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i])) {
+            isFinded = true;
+        }
     }
-    if (Object.is(a, 0) && Object.is(b, -0)) {
-        return true;
-    }
-    if (Object.is(a, -0) && Object.is(b, 0)) {
-        return true;
-    }
-    return Object.is(a, b);
+    return isFinded;
 };
+
+export const myLength = (array) => {
+    let result = 0;
+    for (let value of array) {
+        result++;
+    }
+    return result;
+};
+
+export const myIndexOf = (array, element) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === element) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+let array = [1, 2, 3];
+export const myPop = (array) => {
+    let newArray = [];
+    for (let i = 0; i < array.length - 1; i++) {
+        newArray.push(array[i]);
+    }
+    return newArray;
+};
+console.log(myPop(array));
