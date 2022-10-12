@@ -25,7 +25,6 @@ export const myIndexOf = (array, element) => {
     return -1;
 };
 
-let array = [1, 2, 3];
 export const myPop = (array) => {
     let newArray = [];
     for (let i = 0; i < array.length - 1; i++) {
@@ -33,4 +32,3 @@ export const myPop = (array) => {
     }
     return newArray;
 };
-console.log(myPop(array));
