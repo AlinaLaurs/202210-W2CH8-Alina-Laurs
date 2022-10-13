@@ -1,5 +1,14 @@
 export const mySome = (array, func) => {
     let isFinded = false;
+
+    const arrayError = new Error('Error, el array no es válido.');
+    const arrayEmpty = new Error('Error, el array está vacio.');
+    if (!Array.isArray(array)) {
+        throw arrayError;
+    }
+    if (array.length < 1) {
+        throw arrayEmpty;
+    }
     for (let i = 0; i < array.length; i++) {
         if (func(array[i])) {
             isFinded = true;
@@ -10,6 +19,10 @@ export const mySome = (array, func) => {
 
 export const myLength = (array) => {
     let result = 0;
+    const arrayEmpty = new Error('Error, el array está vacio.');
+    if (array.length < 1) {
+        throw arrayEmpty;
+    }
     for (let value of array) {
         result++;
     }
@@ -17,6 +30,10 @@ export const myLength = (array) => {
 };
 
 export const myIndexOf = (array, element) => {
+    const arrayEmpty = new Error('Error, el array está vacio.');
+    if (array.length < 1) {
+        throw arrayEmpty;
+    }
     for (let i = 0; i < array.length; i++) {
         if (array[i] === element) {
             return i;
@@ -26,9 +43,7 @@ export const myIndexOf = (array, element) => {
 };
 
 export const myPop = (array) => {
-    let newArray = [];
-    for (let i = 0; i < array.length - 1; i++) {
-        newArray.push(array[i]);
-    }
-    return newArray;
+    const element = array[array.length - 1];
+    array.length = array.length - 1;
+    return element;
 };
